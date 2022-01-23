@@ -15,8 +15,17 @@ export class Feed {
     @Prop({ type: Types.ObjectId, ref: User.name })
     createdBy: string;
 
-    @Prop({ default: new Date() })
-    createdAt?: Date;
+    @Prop()
+    createdAt: Date;
 }
 
+
+
 export const FeedSchema = SchemaFactory.createForClass(Feed);
+
+FeedSchema.pre('save', function (next){
+    // @ts-ignore
+    this.createdAt = new Date();
+
+    next();
+})

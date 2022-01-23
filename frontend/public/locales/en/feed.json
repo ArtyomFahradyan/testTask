@@ -4,7 +4,10 @@
   "cancel": "Cancel",
   "content": "Content",
   "title": "Title",
+  "share": "Share",
+  "feedCreated": "Feed created",
   "remove": "Remove",
+  "removed": "Removed",
   "contentPrompt": "Content is required",
   "titlePrompt": "Title is required",
   "save": "Save"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Typography } from "antd";
+import { Button, notification, Typography } from "antd";
 import { useFormik, FormikErrors } from "formik";
 import { useTranslation } from "react-i18next";
 import { isEmail, isEmpty, isMinLength } from "validators";
@@ -32,13 +32,20 @@ function SignIn() {
   const { setUser } = useWorkspaceActions();
 
   const onSubmit = async (form: LoginType) => {
-    const user = await login({
-      email: form.email,
-      password: form.password,
-    });
-    setUser(user);
-    localStorage.setItem("token", user._id);
-    navigate("/");
+    try {
+      const user = await login({
+        email: form.email,
+        password: form.password,
+      });
+      setUser(user);
+      localStorage.setItem("token", user._id);
+      navigate("/");
+    } catch (err) {
+      notification.error({
+        message: t("error"),
+        description: t("invalidCredentials"),
+      });
+    }
   };
 
   const { errors, touched, handleSubmit, getFieldProps } = useFormik<LoginType>(

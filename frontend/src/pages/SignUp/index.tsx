@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Typography } from "antd";
+import { Button, notification, Typography } from "antd";
 import { useFormik, FormikErrors } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -28,16 +28,27 @@ function SignUp() {
   const navigate = useNavigate();
 
   const onSubmit = async (form: Account) => {
-    const user = await signup({
-      lastName: form.lastName,
-      firstName: form.firstName,
-      company: form.company,
-      email: form.email,
-      password: form.password,
-    });
-    setUser(user);
-    localStorage.setItem("token", user._id);
-    navigate("/");
+    try {
+      const user = await signup({
+        lastName: form.lastName,
+        firstName: form.firstName,
+        company: form.company,
+        email: form.email,
+        password: form.password,
+      });
+      setUser(user);
+      localStorage.setItem("token", user._id);
+      notification.success({
+        message: t("success"),
+        description: t("accountCreated"),
+      });
+      navigate("/");
+    } catch (err) {
+      notification.error({
+        message: t("error"),
+        description: t("accountExist"),
+      });
+    }
   };
 
   const { errors, touched, handleSubmit, getFieldProps } = useFormik<Account>({

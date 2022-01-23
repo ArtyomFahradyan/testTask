@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Button, Typography, Menu } from "antd";
+import { Button, Typography, Menu, message } from "antd";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useTranslation } from "react-i18next";
-import { DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, ShareAltOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { useWorkspaceActions, WorkspaceSelectors } from "@redux";
 import { getFeeds, removeFeed } from "requests";
@@ -18,7 +18,7 @@ import {
   CreatButtonWrapper,
   UserNameAndDateWrapper,
   StyledDropdown,
-  StyledContent,
+  ContentWrapper,
 } from "./styles";
 
 dayjs.extend(relativeTime);
@@ -47,6 +47,7 @@ function Signup() {
 
   const handleRemove = async (id?: string) => {
     await removeFeed(id);
+    message.success(t("removed"));
     setFeeds(feeds.filter((feed) => feed._id !== id));
   };
 
@@ -74,10 +75,10 @@ function Signup() {
                       {dayjs(createdAt).format("YYYY MMM DD HH:mm")}
                     </Text>
                   </UserNameAndDateWrapper>
-                  {user?._id === createdBy?._id && (
-                    <StyledDropdown
-                      overlay={
-                        <Menu>
+                  <StyledDropdown
+                    overlay={
+                      <Menu>
+                        {user?._id === createdBy?._id && (
                           <Menu.Item
                             key={1}
                             onClick={() => handleRemove(_id)}
@@ -85,14 +86,21 @@ function Signup() {
                           >
                             {t("remove")}
                           </Menu.Item>
-                        </Menu>
-                      }
-                    />
-                  )}
+                        )}
+                        <Menu.Item key={2} icon={<ShareAltOutlined />}>
+                          {t("share")}
+                        </Menu.Item>
+                      </Menu>
+                    }
+                  />
                 </FeedTitle>
                 <FeedContent>
-                  <Text strong>{title}</Text>
-                  <StyledContent>{content}</StyledContent>
+                  <div>
+                    <Text strong>{title}</Text>
+                  </div>
+                  <ContentWrapper>
+                    <Text>{content}</Text>
+                  </ContentWrapper>
                 </FeedContent>
               </FeedItem>
             );

@@ -16,8 +16,6 @@ export const MenuWrapper = styled.div`
 export const Content = styled.div`
   width: 100%;
   height: 100%;
-  contain: layout;
-  top: 56px;
-  position: absolute;
+  padding-top: 60px;
   background-color: ${({ theme }) => theme.feedBackGround};
 `;

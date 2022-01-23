@@ -26,12 +26,15 @@ export const FeedItem = styled.div`
 
 export const FeedContent = styled.div`
   margin-top: 10px;
-  display: inline-grid;
 `;
 
 export const FeedTitle = styled.div`
   display: -webkit-box;
   position: relative;
+`;
+
+export const ContentWrapper = styled.div`
+  margin-top: 10px;
 `;
 
 export const UserNameAndDateWrapper = styled.div`
@@ -48,10 +51,10 @@ export const CreatButtonWrapper = styled.div`
 export const StyledDropdown = styled(Dropdown.Button)`
   right: 0;
   position: absolute;
-`;
 
-export const StyledContent = styled(Text)`
-  margin-top: 10px;
+  &&& > button {
+    border: none;
+  }
 `;
 
 export const LoadMoreWrapper = styled.div`

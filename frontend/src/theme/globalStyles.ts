@@ -6,11 +6,12 @@ const GlobalStyle = createGlobalStyle`
   */
   body {
     padding: 0;
+    background-color: #f0f2f5;
   }
 
   #root {
     width: 100%;
-    height: 100%;
+    //height: inherit;
   }
 `;
 

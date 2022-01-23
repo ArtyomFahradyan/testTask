@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, Button } from "antd";
+import { Modal, Button, message } from "antd";
 import { useTranslation } from "react-i18next";
 import { FEED_TITLE_MAX_LENGTH, TEXT_AREA_MAX_LENGTH } from "constants/common";
 import FormInput from "components/FormInput";
@@ -32,6 +32,7 @@ function CreateFeedModal({ isModalVisible, setIsModalVisible }: Props) {
     const res = await addFeed({ ...values, createdBy: user?._id });
     addFeedAction(res);
     setIsModalVisible(false);
+    message.success(t("feedCreated"));
     resetForm();
   };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "antd";
+import { message, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { Button } from "antd";
 import { FormikErrors, useFormik } from "formik";
@@ -21,6 +21,7 @@ function Profile() {
 
   const onSubmit = async (values: User) => {
     const updatedUser = await updateUser({ ...values, _id: user?._id });
+    message.success(t("updated"));
     setUser(updatedUser);
     resetForm();
   };
