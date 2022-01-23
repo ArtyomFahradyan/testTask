@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { Dropdown, Typography } from "antd";
-
-const { Text } = Typography;
+import { Dropdown } from "antd";
 
 export const FeedWrapper = styled.div`
   display: flex;
