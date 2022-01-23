@@ -1,0 +1,11 @@
+{
+  "createFeed": "Create feed",
+  "newFeed": "New feed",
+  "cancel": "Cancel",
+  "content": "Content",
+  "title": "Title",
+  "remove": "Remove",
+  "contentPrompt": "Content is required",
+  "titlePrompt": "Title is required",
+  "save": "Save"
+}

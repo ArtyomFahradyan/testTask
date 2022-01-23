@@ -1,0 +1,22 @@
+{
+  "firstName": "First name",
+  "lastName": "Last name",
+  "password": "Password",
+  "updateProfile": "Update profile",
+  "youCanEditYourProfile": "You can edit your profile",
+  "alreadyHaveAnAccount": "Already have an account",
+  "dontHaveAnAccount": "Dont have an account?",
+  "email": "Email",
+  "company": "Company",
+  "signUp": "Sign up",
+  "signIn": "Sign in",
+  "confirm": "Confirm password",
+  "firstNamePrompt": "Please enter your first name.",
+  "companyPrompt": "Please enter your company.",
+  "lastNamePrompt": "Please enter your last name.",
+  "emailPrompt": "Please enter your email.",
+  "passwordPrompt": "Please enter your password.",
+  "confirmPrompt": "Please confirm your password.",
+  "invalidPasswordLength": "- at least 8 characters\n",
+  "invalidConfirm": "Passwords do not match."
+}
